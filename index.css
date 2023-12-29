@@ -1,0 +1,221 @@
+body {
+  user-select: none;
+}
+
+
+* {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+#left {
+  float: left;
+  width: 15%;
+  height: 100vh;
+  background-color: #0866ff;
+}
+#left {
+  color: white;
+  font-weight: 700;
+}
+#left #home {
+  height: 10.2%;
+  border-bottom: 3px solid #979494;
+}
+#left #home p {
+  font-size: 30px;
+  text-align: center;
+  line-height: 90px;
+}
+#right {
+  float: left;
+  width: 85%;
+  height: 100vh;
+}
+
+#right #top {
+  background-color: white;
+  height: 10%;
+  box-shadow: 0px 2px 5px #979494;
+}
+
+#right #bottom {
+  background-color: #f0f2f5;
+  height: 89%;
+  margin-top: 7px;
+}
+
+#container {
+  width: 100%;
+  margin-top: 5px;
+  height: 88vh;
+}
+
+#list-func:hover {
+  cursor: pointer;
+}
+
+#node {
+  padding: 20px;
+  overflow-y: scroll;
+  height: 80vh;
+  padding-left: 40px;
+}
+
+#node::-webkit-scrollbar {
+  width: 0px;
+}
+
+.nodeItem {
+  display: inline-block;
+  margin: 10px;
+  padding: 0 20px;
+  margin-right: 30px;
+  cursor: pointer;
+  border-radius: 6px;
+  padding-bottom: 20px;
+  height: 250px;
+  width: 300px;
+  will-change: opacity, transform;
+  position: relative;
+  border-left: 5px solid #0866ff;
+  font-size: 20px;
+  background-color: white;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px;
+}
+
+.nodeItem-close p:hover {
+  color: red;
+}
+
+.nodeItem:hover {
+  animation: 0.3s hieuUngScale ease-in-out forwards;
+}
+
+@keyframes hieuUngScale {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08);
+  }
+}
+
+.nodeItem h3 {
+  text-align: center;
+  margin: 15px auto 15px auto;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto 10px auto;
+}
+
+.information p {
+  margin: 10px auto auto auto;
+}
+
+.nodeItem h3 {
+  color: red;
+  font-size: 30px;
+}
+
+#add {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+#add h2 {
+  border: 1px solid black;
+  padding: 0 15px;
+  border-radius: 50%;
+  background-color: rgb(231, 145, 145);
+  color: white;
+  width: 50px;
+  height: 50px;
+  display: flex;
+}
+#modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  font-size: 40px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close:hover {
+  color: red;
+}
+
+#temperatureChart {
+  width: 100%;
+  height: 300px; /* Điều chỉnh chiều cao của đồ thị */
+}
+
+#wapper {
+  margin: auto;
+  position: fixed;
+  z-index: 10;
+  opacity: 1;
+  width: 500px;
+  height: 305px;
+  background-color: #fff;
+  margin: auto;
+  border-radius: 6px;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  font-size: 13px;
+  display: none;
+}
+
+#form-add-node {
+  padding: 20px 20px;
+  border-radius: 6px;
+}
+#div-blur {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #696a6b;
+  z-index: 5;
+  opacity: 0.2;
+  display: none;
+}
+
+.status {
+  height: 10px;
+  width: 10px;
+  background-color: red;
+  border-radius: 50%;
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BTL | N31</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="icon" type="image/x-icon" href="iot.ico" />
+    <!-- Thêm thư viện Chart.js và Moment.js từ CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style></style>
+  </head>
+
+  <body>
+    <div id="left">
+      <div id="home"><p>HOME</p></div>
+    </div>
+    <div id="right">
+      <div id="top"></div>
+      <div id="bottom">
+        <div id="div-blur">
+        </div>
+        <div id="wapper">
+          <h3 style="margin-top: 15px; display: flex"><span style="margin: auto">Add Node</span></h3>
+          <div id="form-add-node">
+            <div class="row mb-3">
+              <label for="room-id" class="col-sm-2 col-form-label">Room ID:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="room-id" />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="node-id" class="col-sm-2 col-form-label">Node ID:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="node-id" />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="mac" class="col-sm-2 col-form-label">MAC:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="mac" />
+              </div>
+            </div>
+
+            <div style="display: flex; width: 100%; flex-direction: row-reverse">
+              <button type="submit" class="btn btn-primary btn-cancel" style="margin-left: 12px">Cancel</button>
+              <button type="submit" class="btn btn-primary btn-ok">OK</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="container" ">
+          <div id="node">
+            <div class="nodeItem" onclick="showModal()">
+              <div style="position: absolute; top: 3px; right: 10px; color: rgb(94, 92, 92); font-weight: 600; text-align: center; user-select: none" class="nodeItem-close">
+                <p style="margin: 0">x</p>
+              </div>
+              <h3>Node 1</h3>
+              <div class="information">
+                <p>Temperature: 19°C</p>
+                <p>Coordinates: X</p>
+                <p>Coordinates: Y</p>
+              </div>
+              <div style="position: absolute; bottom: 15px; right: 15px; color: red; font-weight: 600; text-align: center; user-select: none" class="status">
+                
+              </div>
+              <input type="hidden" name="room-id" id="room-id-1" value="" />
+              <input type="hidden" name="node-id" id="node-id-1" value="" />
+              <input type="hidden" name="mac" id="mac-1" value="" />
+            </div>
+            <div class="nodeItem" onclick="showModal()">
+              <div style="position: absolute; top: 3px; right: 10px; color: rgb(94, 92, 92); font-weight: 600; text-align: center; user-select: none" class="nodeItem-close">
+                <p style="margin: 0">x</p>
+              </div>
+              <h3>Node 2</h3>
+              <div class="information">
+                <p>Temperature: 19°C</p>
+                <p>Coordinates: X</p>
+                <p>Coordinates: Y</p>
+              </div>
+              <div style="position: absolute; bottom: 15px; right: 15px; color: red; font-weight: 600; text-align: center; user-select: none" class="status"></div>
+              <input type="hidden" name="room-id" id="room-id-2" value="" />
+              <input type="hidden" name="node-id" id="node-id-2" value="" />
+              <input type="hidden" name="mac" id="mac-2" value="" />
+            </div>
+            <div class="nodeItem" onclick="showModal()">
+              <div style="position: absolute; top: 3px; right: 10px; color: rgb(94, 92, 92); font-weight: 600; text-align: center; user-select: none" class="nodeItem-close">
+                <p style="margin: 0">x</p>
+              </div>
+              <h3>Node 3</h3>
+              <div class="information">
+                <p>Temperature: 19°C</p>
+                <p>Coordinates: X</p>
+                <p>Coordinates: Y</p>
+              </div>
+              <div style="position: absolute; bottom: 15px; right: 15px; color: red; font-weight: 600; text-align: center; user-select: none" class="status"></div>
+              <input type="hidden" name="room-id" id="room-id-3" value="" />
+              <input type="hidden" name="node-id" id="node-id-3" value="" />
+              <input type="hidden" name="mac" id="mac-3" value="" />
+            </div>
+          </div>
+        </div>
+
+        <div id="add" onclick="addNodeItem()">
+          <h2 style="border-radius: 17%; user-select: none"><span style="margin: auto">+</span></h2>
+        </div>
+
+        <div id="modal" class="modal">
+          <div class="modal-content" style="width: 1000px">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Nhiệt độ theo thời gian</h2>
+            <h2>ID: MAC-5C-BA-EF-E1-4E-6F</h2>
+            <canvas id="temperatureChart" width="400" height="200"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
